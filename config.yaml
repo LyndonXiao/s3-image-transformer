@@ -1,0 +1,20 @@
+server:
+  host: "0.0.0.0"
+  port: 6699
+
+s3:
+  endpoint: "http://10.118.17.41:9100"
+  access_key: "MJF52PGvA3k7NOdfRYhl"
+  secret_key: "L1iVQ2RcPbyAEDv3Yogl45XOWGhwJKmNSCTuHn8d"
+  region: ""
+  use_path_style: true
+
+cache:
+  max_capacity_mb: 512           # 最大缓存容量(MB)
+  time_to_live_sec: 3600         # 条目存活时间(秒)
+  time_to_idle_sec: 1800         # 空闲时间(秒)
+
+image_processing:
+  default_quality: 80
+  max_width: 1920
+  max_height: 1080
