@@ -1,6 +1,6 @@
-# ImgLake Engine
+# s3 image transformer
 
-ImgLake Engine is a high-performance image processing service that retrieves images from S3-compatible storage, processes them on-the-fly, and serves them with efficient caching.
+s3 image transformer is a high-performance image processing service that retrieves images from S3-compatible storage, processes them on-the-fly, and serves them with efficient caching.
 
 ## Features
 

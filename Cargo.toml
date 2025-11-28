@@ -1,5 +1,5 @@
 [package]
-name = "img-transform-engine"
+name = "s3-image-transformer"
 version = "0.1.0"
 edition = "2021"
 
