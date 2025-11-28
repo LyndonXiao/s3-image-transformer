@@ -1249,26 +1249,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "img-lake-engine"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aws-credential-types",
- "aws-sdk-s3",
- "aws-types",
- "bytes",
- "config",
- "futures",
- "moka",
- "opencv",
- "serde",
- "tokio",
- "tracing",
- "tracing-subscriber",
- "warp",
-]
-
-[[package]]
 name = "indexmap"
 version = "2.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2026,6 +2006,26 @@ name = "ryu"
 version = "1.0.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
+
+[[package]]
+name = "s3-image-transformer"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "aws-credential-types",
+ "aws-sdk-s3",
+ "aws-types",
+ "bytes",
+ "config",
+ "futures",
+ "moka",
+ "opencv",
+ "serde",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+ "warp",
+]
 
 [[package]]
 name = "same-file"

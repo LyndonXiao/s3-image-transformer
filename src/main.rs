@@ -34,9 +34,37 @@ async fn main() -> Result<()> {
     // 初始化日志
     tracing_subscriber::fmt::init();
 
-    // 加载配置
+    // 解析命令行参数以支持 -c/--config <file>
+    let mut args = std::env::args_os();
+    // 跳过程序名
+    args.next();
+    let mut config_path: Option<std::path::PathBuf> = None;
+    while let Some(arg) = args.next() {
+        if arg == "-c" || arg == "--config" {
+            if let Some(p) = args.next() {
+                config_path = Some(std::path::PathBuf::from(p));
+            }
+        } else if let Some(s) = arg.to_str() {
+            if s.starts_with("-c=") {
+                if let Some(val) = s.splitn(2, '=').nth(1) {
+                    config_path = Some(std::path::PathBuf::from(val));
+                }
+            }
+        }
+    }
+
+    // 如果未指定，默认使用可执行文件同目录下的 `config.yaml`（回退到当前工作目录）
+    let config_file = if let Some(p) = config_path {
+        p
+    } else {
+        let exe = std::env::current_exe().unwrap_or_else(|_| std::env::current_dir().unwrap());
+        let exe_dir = exe.parent().unwrap_or_else(|| std::path::Path::new("."));
+        exe_dir.join("config.yaml")
+    };
+
+    // 加载配置文件（支持指定完整路径或默认的 config.yaml）
     let config_loader = ConfigLoader::builder()
-        .add_source(config::File::with_name("config"))
+        .add_source(config::File::from(config_file.as_path()))
         .build()?;
 
     let app_config: AppConfig = config_loader.try_deserialize()?;

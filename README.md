@@ -13,7 +13,18 @@ s3 image transformer is a high-performance image processing service that retriev
 
 ## Configuration
 
-The service is configured through `config.yaml`:
+The service is configured through `config.yaml` (default) or a custom file specified with the `-c` or `--config` flag:
+
+```bash
+# Example with default config.yaml
+./s3-image-transformer
+
+# Example with custom config file
+./s3-image-transformer -c /path/to/custom-config.yaml
+./s3-image-transformer --config=/path/to/custom-config.yaml
+```
+
+### Config File Example
 
 ```yaml
 server:
